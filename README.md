@@ -19,12 +19,14 @@ current available commands are:
 - generate components:
     `haykal gen -a --name=user --attrs=username:string,password:string`
     takes flag arguments:
+
        - -a: all
        - -c: controller
        - -r: router
        - -i: model interface
        - -m: model implementation
        - -mi: migration
+       
     and attributes argument `--attrs`
     currently supported types: `string`, `number` and `Date`, other types would have to be
     added to the generated code by hand until they're supported.
