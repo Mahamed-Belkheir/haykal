@@ -1,6 +1,6 @@
 {
   "name": "haykal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a code generation tool",
   "main": "index.js",
   "scripts": {
@@ -8,5 +8,8 @@
   },
   "author": "Mahamed Belkheir",
   "license": "MIT",
-  "files": [ "/lib", "index.js"]
+  "files": [
+    "/lib",
+    "index.js"
+  ]
 }
