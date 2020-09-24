@@ -1,6 +1,6 @@
 {
   "name": "haykal",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "a code generation tool",
   "main": "index.js",
   "bin": "./index.js",
