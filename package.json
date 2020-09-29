@@ -1,7 +1,7 @@
 {
   "name": "haykal",
   "version": "0.0.9",
-  "description": "a code generation tool",
+  "description": "Typescript MVC framework",
   "main": "index.js",
   "bin": "./index.js",
   "scripts": {

@@ -1,6 +1,5 @@
 # Haykal
-Haykal is a project scaffolding and code generation tool, made for creating projects with a loose coupling structure
-and to automate generation of boilerplate code.
+Haykal is a typescript MVC framework, originally designed for generating web application backends, it is flexible enough to work with any project. Haykal generates a loosely coupled project, and is able to generate component templates.
 
 Haykal uses Express and Objection/Knex by default, but it's decoupled and can be replaced by other
 equivalent libraries and frameworks.
