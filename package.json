@@ -14,6 +14,11 @@
     "index.js"
   ],
   "dependencies": {
-    "commander": "^6.2.0"
+    "chalk": "^4.1.0",
+    "commander": "^6.2.0",
+    "fs-extra": "^9.0.1",
+    "inquirer": "^7.3.3",
+    "listr": "^0.14.3",
+    "pluralize": "^8.0.0"
   }
 }
