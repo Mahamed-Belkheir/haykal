@@ -49,10 +49,10 @@ haykal.command("init <project-name>")
                 fse.ensureDir(`./${projectName}/src/services`)
             ]))
         },
-        {
-            title: "Installing dependencies",
-            task: () => setupNPMDependencies(projectName, answers.application, answers.database)
-        }
+        // {
+        //     title: "Installing dependencies",
+        //     task: () => setupNPMDependencies(projectName, answers.application, answers.database)
+        // }
     ]).run()
 })
 
@@ -74,7 +74,6 @@ haykal
 .action(async (component, options) => {
     let attributes = {}
     let conf = await readConfig()
-    console.log(conf)
     component = component[0].toUpperCase() + component.slice(1);
     if (Object.keys(options.attributes).length == 0) {
         while(await getNextAttribute(attributes)) {}

@@ -6,7 +6,7 @@ const controller = (name) => (`export class ${name}Controller {
     ) {}
 }`);
 
-const resourceController = (name) => (`import { ${name}ModelInterface, ${name} } from "../models/interface/${name.toLowerCase()}
+const resourceController = (name) => (`import { ${name}ModelInterface, ${name} } from "../models/interfaces/${name.toLowerCase()}"
 
 
 export class ${name}Controller {

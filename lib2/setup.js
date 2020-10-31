@@ -30,7 +30,7 @@ async function setupExpress(project) {
 }
 
 async function setupInterface(project) {
-    await fse.outputFile(`./${project}/src/models/interface/base.ts`, resourceInterfaceBase());
+    await fse.outputFile(`./${project}/src/models/interfaces/base.ts`, resourceInterfaceBase());
 }
 
 async function setupDB(project, db) {

@@ -20,8 +20,8 @@ async function generateRoute(name, application, resource, api) {
     }
     if (resource)
         name = pluralize(name)
-    name.toLowerCase();
-    await fse.outputFile(`./src/application/${application}/${api}/${name}.ts`, template);
+    name = name.toLowerCase();
+    await fse.outputFile(`./src/application/${application}/api/${api}/${name}.ts`, template);
 }
 
 module.exports = {

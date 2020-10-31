@@ -19,7 +19,10 @@ const jsonSchemaMap = {
 
 
 
-const objectionModel = (name, attributes) => (`export class ${name}ObjectionModel extends Model implements ${name} {
+const objectionModel = (name, attributes) => (`import { Model, BaseModel } from "./base";
+import { ${name}, ${name}ModelInterface } from "../interfaces/${name.toLowerCase()}";
+
+export class ${name}ObjectionModel extends Model implements ${name} {
     ${Object.entries(attributes).map(([key, value]) => {
         return `${key}:\t\t\t${typeMap[value]}`
     }).join("\n\t")}

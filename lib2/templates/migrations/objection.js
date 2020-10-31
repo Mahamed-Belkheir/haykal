@@ -12,7 +12,6 @@ const typeMap = {
 const objectionMigration = (name, attributes) => (`exports.up = function(knex) {
     return knex.schema
     .createTable("${pluralize(name.toLowerCase())}", (table) => {
-        table.increments("id").primary();
         ${Object.entries(attributes).map(([key, val]) => `table${typeMap[val](key)}`).join('\n\t\t')}
     })
   };
