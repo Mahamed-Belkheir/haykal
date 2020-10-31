@@ -4,8 +4,9 @@ async function createConfig(projectName, version, application, dblayer) {
     await fse.outputJson(`./${projectName}/haykal.json`, {
         version,
         "project-name": projectName,
-        "applicationLayer": application,
-        "databaseLayer": dblayer
+        "application": application,
+        "database": dblayer,
+        "api": "v1",
     }, {spaces: 4})
 }
 

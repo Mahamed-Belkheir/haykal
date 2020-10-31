@@ -6,6 +6,10 @@ const { knexfile, connection } = require("./templates/database/objection");
 const { dependencyIndex } = require("./templates/dependency");
 const { resourceInterfaceBase } = require("./templates/interfaces/resource");
 const { objectionModelBase } = require("./templates/models/objection");
+const childProcess = require("child_process");
+const { promisify } = require('util')
+
+const exec = promisify(childProcess.exec);
 
 async function setupApplication(project, application) {
     switch(application) {
@@ -48,7 +52,7 @@ async function setupObjectionDB(project) {
 }
 
 async function setupConfigs(project) {
-    await fse.outputFile(`./${project}/package.json`, packageJson());
+    await fse.outputFile(`./${project}/package.json`, packageJson(project));
     await fse.outputFile(`./${project}/tsconfig.json`, tsConfig());
     await fse.outputFile(`./${project}/jest.config.js`, jestConfig());
     await fse.outputFile(`./${project}/.gitignore`, ignore());
@@ -63,6 +67,46 @@ async function setupExceptions(project) {
     await fse.outputFile(`./${project}/src/exceptions/index.ts`, exceptions())
 }
 
+const defaultPackages = {
+    dep: [],
+    dev: [ "typescript", 
+            "nodemon", 
+            "ts-jest", 
+            "supertest", 
+            "jest", 
+            "@types/node", 
+            "@types/jest"
+        ],
+}
+
+const applicationPackages = {
+    express: {
+        dep: ["express"],
+        dev: ["@types/express"],
+    }
+}
+
+const databasePackages = {
+    objection: {
+        dep: ["objection", "knex"],
+        dev: ["sqlite3"]
+    }
+}
+
+async function setupNPMDependencies(project, application, database) {
+    let dep = [...defaultPackages.dep];
+    let dev = [...defaultPackages.dev];
+    if (databasePackages[database]) {
+        dep = [...dep, ...databasePackages[database].dep]
+        dev = [...dev, ...databasePackages[database].dev]
+    }
+    if (applicationPackages[application]) {
+        dep = [...dep, ...applicationPackages[application].dep]
+        dev = [...dev, ...applicationPackages[application].dev]
+    }
+    return exec(`cd ${project} && npm i ${dep.join(" ")} && npm i -D ${dev.join(" ")}`)
+}
+
 module.exports = {
     setupDB,
     setupInterface,
@@ -70,4 +114,5 @@ module.exports = {
     setupApplication,
     setupDependency,
     setupExceptions,
+    setupNPMDependencies,
 }

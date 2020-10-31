@@ -1,3 +1,5 @@
+const pluralize = require("pluralize");
+
 const controller = (name) => (`export class ${name}Controller {
     constructor(
        
@@ -28,3 +30,9 @@ export class ${name}Controller {
         await this.${pluralize(name.toLowerCase())}.delete(id);
     }
 }`);
+
+
+module.exports = {
+    controller,
+    resourceController,
+}

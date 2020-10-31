@@ -1,3 +1,6 @@
+const pluralize = require("pluralize");
+
+
 const typeMap = {
     "string":       'string',
     "number":       'number',
