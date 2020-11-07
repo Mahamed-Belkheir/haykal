@@ -3,7 +3,7 @@ const exceptions = require("../lib/templates/exceptions");
 const { expressIndex, expressError, expressRouter } = require("./templates/applications/express/setup");
 const { packageJson, tsConfig, jestConfig, ignore } = require("./templates/config");
 const { knexfile, connection } = require("./templates/database/objection");
-const { dependencyIndex } = require("./templates/dependency");
+const { dependencyIndex, dependencyConfig } = require("./templates/dependency");
 const { resourceInterfaceBase } = require("./templates/interfaces/resource");
 const { objectionModelBase } = require("./templates/models/objection");
 const childProcess = require("child_process");
@@ -61,6 +61,7 @@ async function setupConfigs(project) {
 
 async function setupDependency(project) {
     await fse.outputFile(`./${project}/src/dependency/index.ts`, dependencyIndex());
+    await fse.outputFile(`./${project}/src/dependency/config.ts`, dependencyConfig());
 }
 
 async function setupExceptions(project) {

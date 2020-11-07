@@ -7,7 +7,6 @@ const Listr = require('listr');
 const fse = require('fs-extra');
 const chalk = require('chalk');
 const haykal = new Command();
-const Rx = require('rxjs');
 const { generateController } = require('./generate/controller');
 const { generateInterface } = require('./generate/interface');
 const { generateMigration } = require('./generate/migration');
@@ -49,10 +48,10 @@ haykal.command("init <project-name>")
                 fse.ensureDir(`./${projectName}/src/services`)
             ]))
         },
-        // {
-        //     title: "Installing dependencies",
-        //     task: () => setupNPMDependencies(projectName, answers.application, answers.database)
-        // }
+        {
+            title: "Installing dependencies",
+            task: () => setupNPMDependencies(projectName, answers.application, answers.database)
+        }
     ]).run()
 })
 

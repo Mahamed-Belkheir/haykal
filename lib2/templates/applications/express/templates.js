@@ -6,7 +6,7 @@ const router = Router()
 router.get('/', async (req, res, next) => {
     try {
         
-        })
+        
     } catch (e) {
         next(e)
     }
@@ -27,7 +27,6 @@ router.get('/', async (req, res, next) => {
             status: 'success',
             data
         })
-        })
     } catch (e) {
         next(e)
     }
@@ -39,7 +38,6 @@ router.post('/', async (req, res, next) => {
         await controllers.${resource.toLowerCase()}.create(req.body);
         res.send({
             status: 'success'
-        })
         })
     } catch (e) {
         next(e)
@@ -54,7 +52,6 @@ router.patch('/:id', async (req, res, next) => {
         res.send({
             status: 'success'
         })
-        })
     } catch (e) {
         next(e)
     }
@@ -67,7 +64,6 @@ router.delete('/:id', async (req, res, next) => {
         await controllers.${resource.toLowerCase()}.delete(id);
         res.send({
             status: 'success'
-        })
         })
     } catch (e) {
         next(e)
