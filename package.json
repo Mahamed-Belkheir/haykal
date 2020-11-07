@@ -1,6 +1,6 @@
 {
   "name": "haykal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typescript MVC framework",
   "main": "index.js",
   "bin": "./index.js",
