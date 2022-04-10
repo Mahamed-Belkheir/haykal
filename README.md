@@ -1,4 +1,30 @@
 # Haykal
+---
+# Deprecated
+version 0.1.* has been deprecated due to both architectural and tooling reasons, here's a list of the current issues:
+
+##### Architecture
+- The non-standard MVC terminology confuses newcomers
+- The MVC structure did not scale well, business logic in the controller made it hard to reuse code between other controllers
+- Repositories did not support transactions out of the box, hacking them in was not convenient
+- A lot of repeated code, between interfaces, repositories and repository interfaces
+- Having models be interfaces and only define domain method types made for a lot of code repetition
+- Having both an implementation and interface for repositories proved to have little value, as long as the implementation repository did not leak the DB layer
+- Lack of colocation made making changes to one component have you jumping between routes, controllers, model interfaces, repository interfaces, and the repository implementations, each in its own directory
+- manual DI did not scale well, files got larger, introducing new repositories meant more imports and editing of controller initialization.
+
+##### Tooling
+The CLI code is badly structured, and the template strings have no typesafety and the generated code had bad formatting.
+
+### Moving forward
+version 0.2 is in development, I've been experimenting with multiple new structures, and after 4 drafts and a few months of use in development, I think I've picked
+a lay out for 0.2 that I believe addresses all the pain points mentioned earlier, inspired by DDD in decoupling the domain models, unit of work for decoupled transactions, and angular in colocation of files, and making use of tsyringe for handling DI, among other improvements.
+
+Work will also be put into making the CLI project structure cleaner, and I'll be experimenting with using ts-morph for code generation.
+
+And documentation, this has been severly lacking 😓
+
+---
 Haykal is a typescript MVC framework, originally designed for generating web application backends, it is flexible enough to work with any project. Haykal generates a loosely coupled project, and is able to generate component templates.
 
 Haykal uses Express and Objection/Knex by default, but it's decoupled and can be replaced by other
@@ -65,8 +91,6 @@ current available commands are:
             - index.ts
     - /exceptions
         - index.ts
-```
-
 - Controllers:
     Unlike other MVC frameworks, controllers are not the HTTP route handlers, those are inside route files.
     Controllers are the logic side of Models in the usual MVC pattern, and they handle only business rules.
@@ -105,3 +129,4 @@ current available commands are:
 - Exceptions:
     - index.ts:
         Holds exception and error classes.
+```
